@@ -1,5 +1,4 @@
-﻿
-// src/App.tsx (full file)
+﻿// src/App.tsx (full file)
 
 import React, { useState, useRef } from "react";
 
@@ -15,8 +14,7 @@ import SplitText from "./components/SplitText"; // <-- exact name, must match fi
 import DecryptedText from "./components/DecryptedText";
 import ScrollReveal from "./components/ScrollReveal";
 import Stepper, { Step } from "./components/Stepper";
-import logoImg from "./assets/logo.png";
-
+import logoImg from "./assets/logo.svg";
 
 export default function App(): React.JSX.Element {
   const [showStepper, setShowStepper] = useState(false);
@@ -41,13 +39,24 @@ export default function App(): React.JSX.Element {
       <header className="relative z-40">
         <div className="container mx-auto px-6 py-6">
           <BubbleMenu
-            logo={
-              <img
-                src={logoImg}
-                alt="MyBrand"
-                className="h-8 md:h-10 object-contain"
-              />
-            }
+            logo={logoImg}
+            menuItems={[
+              { label: "HOME", href: "#", ariaLabel: "Home" },
+              { label: "ABOUT", href: "#about", ariaLabel: "About" },
+              { label: "TEAM", href: "#", ariaLabel: "Team" },
+              { label: "NOTA", href: "#nota", ariaLabel: "NOTA" },
+            ]}
+            logoSize={60}
+            bubbleSize={72}
+            bubbleSpacing={24}
+            rotationOffset={-90}
+            menuRadius={120}
+            menuItemFontSize={14}
+            menuItemFontWeight="600"
+            menuItemLetterSpacing={1.2}
+            menuItemLineHeight={1}
+            menuItemPaddingX={14}
+            menuItemPaddingY={10}
             menuBg="#ffffff"
             menuContentColor="#111111"
             useFixedPosition={false}
@@ -60,12 +69,12 @@ export default function App(): React.JSX.Element {
       <main className="container mx-auto px-6 pt-20 pb-20">
         <section className="grid grid-cols-1 md:grid-cols-[1fr_520px] gap-x-30 gap-y-20 items-center">
           {/* Left column */}
-          <div className="text-left ml-4 md:ml-12">
+          <div className="text-left ml-6 md:ml-16">
             <div className="flex flex-col justify-start gap-6 md:gap-8 max-w-2xl">
               <SplitText
-                text="PROJECT JEEV"
+                text="JEEV:DeepSea Analytics"
                 tag="h1"
-                className="text-5xl md:text-7xl font-extrabold leading-tight"
+                className="text-5xl font-extrabold leading-tight"
                 splitType="words, chars"
                 duration={0.9}
               />
@@ -156,14 +165,16 @@ export default function App(): React.JSX.Element {
                   />
                 }
                 secondContent={
-                  <div className="w-full h-full grid place-items-center bg-gradient-to-br from-[#0b1220] to-[#071027] p-6">
-                    <div className="text-center">
-                      <h3 className="text-2xl font-bold">Interactive Demo</h3>
-                      <p className="mt-2 text-sm text-neutral-300">
-                        Hover to reveal pixel transition
-                      </p>
-                    </div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1616616839679-eec174e9d429?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Hero"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
                 }
                 gridSize={10}
                 pixelColor="#ffffff"
@@ -174,61 +185,30 @@ export default function App(): React.JSX.Element {
           </div>
 
           {/* Small decrypted text below the hero grid */}
-          <div className="mt-12">
+          <div className="mt-8 ml-20 md:ml-32 text-3xl">
             <DecryptedText
-              text="Hover to decrypt - micro interactions rule the web."
+              text="1.Helps discover new species in oceans and other ecosystems. 2.Reduces dependency on traditional database matching. 3.Provides a visual, interactive tool for researchers to analyze and interpret complex DNA data."
               animateOn="hover"
             />
           </div>
         </section>
       </main>
 
-      {/* Features / Bento */}
-      <section id="features" className="py-20 relative z-10 w-full">
-        <div className="w-full px-0">
-          {" "}
-          {/* remove container */}
-          <SplitText
-            text="Features"
-            tag="h2"
-            className="text-3xl font-bold text-center"
-          />
-          <p className="mt-3 text-neutral-300 text-center">
-            An interactive collection of components demonstrates how to assemble
-            a modern landing page.
-          </p>
-          {/* Full width MagicBento */}
-          <div className="mt-8 w-full">
-            <MagicBento
-              textAutoHide
-              enableStars
-              enableSpotlight
-              enableBorderGlow
-              enableTilt
-              enableMagnetism
-              clickEffect
-              spotlightRadius={300}
-              particleCount={10}
-              glowColor="132, 0, 255"
-            />
-          </div>
-        </div>
-      </section>
-
+      
       {/* Gallery */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
+      <section>
+        <div className="container mx-auto scroll-py-10">
           <SplitText
-            text="Gallery"
+            text="Tech Stack"
             tag="h3"
-            className="text-2xl font-semibold"
+            className="text-6xl font-bold ml-32"
           />
           <div
             className="mt-6 h-[420px] rounded-xl overflow-hidden"
             ref={galleryRef}
           >
             <CircularGallery
-              bend={3}
+              bend={0}
               textColor="#ffffff"
               borderRadius={0.05}
               scrollEase={0.02}
@@ -239,7 +219,7 @@ export default function App(): React.JSX.Element {
 
       {/* testimonial / CTA band with GradualBlur footer */}
       <footer className="relative mt-12">
-        <GradualBlur preset="page-footer" opacity={0.95} curve="bezier">
+        <GradualBlur preset="page-footer" opacity={0.50} curve="bezier">
           <div className="container mx-auto px-6 py-14 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
               <h4 className="text-xl font-semibold">
@@ -272,12 +252,12 @@ export default function App(): React.JSX.Element {
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-6">
           <div className="w-full max-w-2xl rounded-xl bg-[#07030d] p-6">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold">Onboarding</h3>
+              <h3 className="text-2xl font-bold">WELCOME</h3>
               <button
                 className="text-neutral-300"
                 onClick={() => setShowStepper(false)}
               >
-                x
+                X
               </button>
             </div>
 
@@ -286,27 +266,37 @@ export default function App(): React.JSX.Element {
               backButtonText="Previous"
               nextButtonText="Next"
               onFinalStepCompleted={() => {
-                setShowStepper(false);
+                window.open(
+                  "https://github.com/Xspecilist/SIH",
+                  "_blank",
+                  "noopener noreferrer"
+                );
                 // in real project: trigger onboarding flow
               }}
             >
               <Step>
-                <h4 className="text-lg font-semibold">Welcome</h4>
+                <h4 className="text-lg font-semibold">GOALS</h4>
                 <p className="mt-2 text-neutral-300">
-                  Tell us a little about your project.
+                  Our goal is to identify and classify both known and unknown
+                  DNA sequences efficiently, enabling scientists to discover new
+                  species and study biodiversity.
                 </p>
               </Step>
               <Step>
-                <h4 className="text-lg font-semibold">Select features</h4>
+                <h4 className="text-lg font-semibold">OUR USP</h4>
                 <p className="mt-2 text-neutral-300">
-                  Choose the components you want to include.
+                  1. U-Map
+                  <br />
+                  2. Clustering
+                  <br />
+                  3. Consensus Table
+                  <br />
+                  4. AI Powered Chatbot
                 </p>
               </Step>
               <Step>
-                <h4 className="text-lg font-semibold">You're done</h4>
-                <p className="mt-2 text-neutral-300">
-                  We'll send a follow-up email with next steps.
-                </p>
+                <h4 className="text-lg font-semibold">TIME FOR PROTOTYPE ?</h4>
+                <p className="mt-2 text-neutral-300">Click on CONTINUE</p>
               </Step>
             </Stepper>
           </div>
