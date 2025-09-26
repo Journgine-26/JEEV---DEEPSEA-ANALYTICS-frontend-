@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useRef, useState, useMemo, PropsWithChildren } from 'react';
+﻿import React, { CSSProperties, useEffect, useRef, useState, useMemo, PropsWithChildren } from 'react';
 import * as math from 'mathjs';
 
 type GradualBlurProps = PropsWithChildren<{
@@ -295,3 +295,5 @@ const injectStyles = () => {
 if (typeof document !== 'undefined') {
   injectStyles();
 }
+
+

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+﻿import { useEffect, useState, useRef } from 'react';
 import { motion, HTMLMotionProps } from 'motion/react';
 
 interface DecryptedTextProps extends HTMLMotionProps<'span'> {
@@ -204,3 +204,5 @@ export default function DecryptedText({
     </motion.span>
   );
 }
+
+

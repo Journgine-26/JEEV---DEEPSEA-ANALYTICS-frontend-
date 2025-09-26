@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
@@ -191,3 +191,5 @@ const TextType = ({
 };
 
 export default TextType;
+
+

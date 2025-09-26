@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+﻿import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 
 export interface BentoCardProps {
@@ -22,6 +22,7 @@ export interface BentoProps {
   glowColor?: string;
   clickEffect?: boolean;
   enableMagnetism?: boolean;
+  className?: string;
 }
 
 const DEFAULT_PARTICLE_COUNT = 12;
@@ -125,7 +126,7 @@ const ParticleCard: React.FC<{
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement[]>([]);
-  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
+  const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]); 
   const isHoveredRef = useRef(false);
   const memoizedParticles = useRef<HTMLDivElement[]>([]);
   const particlesInitialized = useRef(false);
@@ -338,15 +339,18 @@ const ParticleCard: React.FC<{
     };
   }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor]);
 
-  return (
-    <div
-      ref={cardRef}
-      className={`${className} relative overflow-hidden`}
-      style={{ ...style, position: 'relative', overflow: 'hidden' }}
-    >
-      {children}
-    </div>
-  );
+
+   const base = 'relative overflow-hidden'; // adjust to your base classes
+
+return (
+  <div
+    ref={cardRef}
+    className={`relative overflow-hidden w-full ${className ?? ''}`}
+    style={{ ...style, position: 'relative', overflow: 'hidden' }}
+  >
+    {children}
+  </div>
+);
 };
 
 const GlobalSpotlight: React.FC<{
@@ -854,3 +858,5 @@ const MagicBento: React.FC<BentoProps> = ({
 };
 
 export default MagicBento;
+
+
